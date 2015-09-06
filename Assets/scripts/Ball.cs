@@ -73,8 +73,8 @@ public class Ball : MonoBehaviour {
 	}
 
 	void UpdateScore() {
-		score1.text = "Player 1\n" + p1;
-		score2.text = "Player 2\n\t\t  " + p2;
+		score1.text = "" + p1;
+		score2.text = "" + p2;
 	}
 
 }

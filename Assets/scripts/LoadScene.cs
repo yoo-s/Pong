@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class LoadScene : MonoBehaviour {
@@ -7,3 +8,4 @@ public class LoadScene : MonoBehaviour {
 		Application.LoadLevel ("main");
 		//Application.Quit();
 }
+*/
