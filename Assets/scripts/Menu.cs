@@ -35,6 +35,11 @@ public class Menu : MonoBehaviour {
 		Application.LoadLevel (1);
 	}
 
+	// Access Menu from game
+	public void goMenu() {
+		Application.LoadLevel (0);
+	}
+
 	// Yes on quitMenu
 	public void quitGame() {
 		Application.Quit ();
