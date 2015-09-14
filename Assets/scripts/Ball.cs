@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Ball : MonoBehaviour {
 	public float speed = 30;
 	public GUIText score1;
 	public GUIText score2;
+	public Canvas scoreMenu;
+	public Canvas scoreMenu2;
+	public Text winner1;
+	public Text winner2;
+	public Button replay;
+	public Button quitGame;
 	public int p1;
 	public int p2;
 	public GameObject ball;
@@ -14,6 +21,19 @@ public class Ball : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		score1.pixelOffset.x = Screen.width/2;
+		score1.pixelOffset.y = Screen.height/15;
+		score1.fontSize = 0.1;
+
+		scoreMenu = scoreMenu.GetComponent<Canvas> ();
+		scoreMenu2 = scoreMenu2.GetComponent<Canvas> ();
+		winner1 = scoreMenu.GetComponent<Text> ();
+		winner2 = scoreMenu2.GetComponent<Text> ();
+		replay = replay.GetComponent<Button> ();
+		quitGame = quitGame.GetComponent<Button> ();
+		scoreMenu.enabled = false;
+		scoreMenu2.enabled = false;
+
 		UpdateScore ();
 		ballRB = GetComponent<Rigidbody2D> ();
 		originalPosition = transform.position;
@@ -63,18 +83,33 @@ public class Ball : MonoBehaviour {
 		}
 
 		// dead zones
-		if (col.gameObject.name == "WallLeft") {
-			p2++;
+		if (col.gameObject.name == "WallLeft" || col.gameObject.name == "WallRight") {
+			if (col.gameObject.name == "WallLeft") {
+				p2++;
+			} else {
+				p1++;
+			}
 			UpdateScore ();
-			resetBall();
-			speed = 30;
-		}
-
-		if (col.gameObject.name == "WallRight") {
-			p1++;
-			UpdateScore();
-			resetBall();
-			speed = 30;
+			// Show winner once 10 rounds are played
+			if (p1+p2 == 10) {
+				if (p1 > p2) {
+					Destroy(ball);
+					scoreMenu.enabled = true;
+					replay.enabled = true;
+					quitGame.enabled = true;
+				} else {
+					Destroy(ball);
+					scoreMenu2.enabled = true;
+					replay.enabled = true;
+					quitGame.enabled = true;
+				}
+				//replay.enabled = true;
+				//quitGame.enabled = true;
+			// continue with rounds
+			} else {
+				resetBall();
+				speed = 30;
+			}
 		}
 		
 		if (speed < 50) {
@@ -96,4 +131,14 @@ public class Ball : MonoBehaviour {
 		score2.text = "" + p2;
 	}
 		
+	// Replay
+	public void replayGame() {
+		Application.LoadLevel (1);
+	}
+
+	// Quit game and back to menu
+	public void quit() {
+		Application.LoadLevel (0);
+	}
+
 	}
