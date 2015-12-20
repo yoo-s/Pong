@@ -16,10 +16,38 @@ Platform assembly: C:\Users\Soo-Min\Documents\CS\games\Unity\Pong\pong_Data\Mana
 Loading C:\Users\Soo-Min\Documents\CS\games\Unity\Pong\pong_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Soo-Min\Documents\CS\games\Unity\Pong\pong_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading C:\Users\Soo-Min\Documents\CS\games\Unity\Pong\pong_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.228 seconds
+- Completed reload, in  0.316 seconds
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
 Platform assembly: C:\Users\Soo-Min\Documents\CS\games\Unity\Pong\pong_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Soo-Min\Documents\CS\games\Unity\Pong\pong_Data\Managed\System.dll (this message is harmless)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 26.999765 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 271.
+Total: 1.559444 ms (FindLiveObjects: 0.063290 ms CreateObjectMapping: 0.067281 ms MarkObjects: 1.403214 ms  DeleteObjects: 0.022807 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Menu.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.088668 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 271.
+Total: 0.990974 ms (FindLiveObjects: 0.076974 ms CreateObjectMapping: 0.048465 ms MarkObjects: 0.846718 ms  DeleteObjects: 0.017105 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Menu.Start () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.790937 ms
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 211.
+Total: 0.920271 ms (FindLiveObjects: 0.058158 ms CreateObjectMapping: 0.041053 ms MarkObjects: 0.717857 ms  DeleteObjects: 0.100351 ms)
+

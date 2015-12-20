@@ -4,14 +4,16 @@ using System.Collections;
 
 public class Ball : MonoBehaviour {
 	public float speed = 30;
-	public GUIText score1;
-	public GUIText score2;
+	public Canvas GUI;
+	public Text sc1;
+	public Text sc2;
+	public Button menu;
 	public Canvas scoreMenu;
 	public Canvas scoreMenu2;
 	public Text winner1;
 	public Text winner2;
 	public Button replay;
-	public Button quitGame;
+	public Button quit;
 	public int p1;
 	public int p2;
 	public GameObject ball;
@@ -21,16 +23,17 @@ public class Ball : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		score1.pixelOffset.x = Screen.width/2;
-		score1.pixelOffset.y = Screen.height/15;
-		score1.fontSize = 0.1;
-
+		GUI = GUI.GetComponent<Canvas> ();
+		sc1 = sc1.GetComponent<Text> ();
+		sc2 = sc2.GetComponent<Text> ();
+		menu = menu.GetComponent<Button> ();
 		scoreMenu = scoreMenu.GetComponent<Canvas> ();
 		scoreMenu2 = scoreMenu2.GetComponent<Canvas> ();
 		winner1 = scoreMenu.GetComponent<Text> ();
 		winner2 = scoreMenu2.GetComponent<Text> ();
 		replay = replay.GetComponent<Button> ();
-		quitGame = quitGame.GetComponent<Button> ();
+		quit = quit.GetComponent<Button> ();
+		GUI.enabled = true;
 		scoreMenu.enabled = false;
 		scoreMenu2.enabled = false;
 
@@ -41,7 +44,7 @@ public class Ball : MonoBehaviour {
 		// Initial velocity
 		ballRB.velocity = Vector2.right * speed;
 	}
-	
+
 	float hitFactor(Vector2 ballPos, Vector2 racketPos, float racketHeight) {
 		// ascii art:
 		// ||  1 <- at the top of the racket
@@ -96,15 +99,15 @@ public class Ball : MonoBehaviour {
 					Destroy(ball);
 					scoreMenu.enabled = true;
 					replay.enabled = true;
-					quitGame.enabled = true;
+					quit.enabled = true;
 				} else {
 					Destroy(ball);
 					scoreMenu2.enabled = true;
 					replay.enabled = true;
-					quitGame.enabled = true;
+					quit.enabled = true;
 				}
-				//replay.enabled = true;
-				//quitGame.enabled = true;
+				replay.enabled = true;
+				quit.enabled = true;
 			// continue with rounds
 			} else {
 				resetBall();
@@ -127,8 +130,8 @@ public class Ball : MonoBehaviour {
 	}
 
 	void UpdateScore() {
-		score1.text = "" + p1;
-		score2.text = "" + p2;
+		sc1.text = "" + p1;
+		sc2.text = "" + p2;
 	}
 		
 	// Replay
@@ -137,7 +140,7 @@ public class Ball : MonoBehaviour {
 	}
 
 	// Quit game and back to menu
-	public void quit() {
+	public void quitGame() {
 		Application.LoadLevel (0);
 	}
 

@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour {
 		quit = quit.GetComponent<Button> ();
 		quitMenu.enabled = false;
 	}
-	
+
 	// Quit
 	public void pressExit () {
 		quitMenu.enabled = true;
