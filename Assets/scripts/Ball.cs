@@ -9,9 +9,7 @@ public class Ball : MonoBehaviour {
 	public Text sc2;
 	public Button menu;
 	public Canvas scoreMenu;
-	public Canvas scoreMenu2;
-	public Text winner1;
-	public Text winner2;
+	public Text winner;
 	public Button replay;
 	public Button quit;
 	public int p1;
@@ -28,14 +26,11 @@ public class Ball : MonoBehaviour {
 		sc2 = sc2.GetComponent<Text> ();
 		menu = menu.GetComponent<Button> ();
 		scoreMenu = scoreMenu.GetComponent<Canvas> ();
-		scoreMenu2 = scoreMenu2.GetComponent<Canvas> ();
-		winner1 = scoreMenu.GetComponent<Text> ();
-		winner2 = scoreMenu2.GetComponent<Text> ();
+		winner = winner.GetComponent<Text> ();
 		replay = replay.GetComponent<Button> ();
 		quit = quit.GetComponent<Button> ();
 		GUI.enabled = true;
 		scoreMenu.enabled = false;
-		scoreMenu2.enabled = false;
 
 		UpdateScore ();
 		ballRB = GetComponent<Rigidbody2D> ();
@@ -98,16 +93,22 @@ public class Ball : MonoBehaviour {
 				if (p1 > p2) {
 					Destroy(ball);
 					scoreMenu.enabled = true;
+					winner.text = "Player 1 wins!";
 					replay.enabled = true;
 					quit.enabled = true;
-				} else {
+				} else if (p1 < p2) {
 					Destroy(ball);
-					scoreMenu2.enabled = true;
+					scoreMenu.enabled = true;
+					winner.text = "Player 2 wins!";
+					replay.enabled = true;
+					quit.enabled = true;
+				} else if (p1 == p2) {
+					Destroy(ball);
+					scoreMenu.enabled = true;
+					winner.text = "It's a tie!";
 					replay.enabled = true;
 					quit.enabled = true;
 				}
-				replay.enabled = true;
-				quit.enabled = true;
 			// continue with rounds
 			} else {
 				resetBall();
@@ -133,15 +134,6 @@ public class Ball : MonoBehaviour {
 		sc1.text = "" + p1;
 		sc2.text = "" + p2;
 	}
-		
-	// Replay
-	public void replayGame() {
-		Application.LoadLevel (1);
-	}
+}
 
-	// Quit game and back to menu
-	public void quitGame() {
-		Application.LoadLevel (0);
-	}
-
-	}
+	
